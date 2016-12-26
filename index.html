@@ -12,9 +12,9 @@
     <div ng-controller="LunchCheckController">
       <div>
         Enter a comma separated list (empty word (",,") are ignored:
-        <input type="text"
+        <input type="text" style="border-color:{{textColor}}"
           ng-model="list">
-        <div ><font color="{{textColor}}">{{message}}</font></div>
+        <div style ="color:{{textColor}}">{{message}}</div>
         <br/>
         <button ng-click="displayMessage()">Check If Too Much</button>
       </div>
