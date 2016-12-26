@@ -3,7 +3,9 @@
 
 angular.module('NameCalculator', [])
 
-.controller('NameCalculatorController', function ($scope) {
+.controller('NameCalculatorController', ["$scope", TestFunction]);
+    
+function TestFunction($scope){    
   $scope.name = "";
   $scope.totalValue = 0;
 
@@ -20,6 +22,6 @@ angular.module('NameCalculator', [])
 
     return totalStringValue;
   }
-});
+}
 
 })();
