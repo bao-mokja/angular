@@ -22,6 +22,10 @@ function TestFunction($scope){
         $scope.message = "Too much!"
         $scope.textColor = "green"
     }
+    else{
+        $scope.message = "Please enter data first"
+        $scope.textColor = "red"
+    }
   };
 
 
