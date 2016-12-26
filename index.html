@@ -5,16 +5,16 @@
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <style>body { font-size: 1.3em; }</style>
-    <title>Name Calculator</title>
+    <title>Lunch Check</title>
   </head>
   <body ng-app="LunchCheck">
     <h1>Assignment1</h1>
     <div ng-controller="LunchCheckController">
       <div>
-        Enter the list:
+        Enter a comma separated list (empty word (",,") are ignored:
         <input type="text"
           ng-model="list">
-        <div>{{message}}</div>
+        <div ><font color={{textColor}}>{{message}}</font></div>
         <br/>
         <button ng-click="displayMessage()">Check If Too Much</button>
       </div>
