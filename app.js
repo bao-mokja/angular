@@ -14,7 +14,7 @@ function TestFunction($scope){
 
   $scope.displayMessage = function () {
     var listOfItems = $scope.list.split(',').filter(String)
-    if(listOfItems.length <= 3){
+    if(listOfItems.length > 0 && listOfItems.length <= 3){
         $scope.message = "Enjoy!"
         $scope.textColor = "green"
     }
