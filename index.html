@@ -24,8 +24,8 @@
       <h3>Already Bought List</h3>
       <div ng-if="boughtList.items.length === 0">Nothing bought yet</div>
       <ol>
-        <li ng-repeat="item in boughtList.items">
-          Bought {{ item.quantity }} {{ item.name }}
+        <li ng-repeat="boughtItem in boughtList.items">
+          Bought {{ boughtItem.quantity }} {{ boughtItem.name }}
         </li>
       </ol>
     </div>
