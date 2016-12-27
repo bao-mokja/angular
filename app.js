@@ -48,7 +48,13 @@ function ShoppingListService() {
   };
   
   service.markAsBought = function(itemIndex){
-      boughtItems.push(toBuyItems.splice(itemIndex,1))
+      var boughtItem = toBuyItems.splice(itemIndex,1);
+      
+      var item = {
+        name: boughtItem.name,
+        quantity: boughtItem.quantity
+      };
+      boughtItems.push(item)
   }
 }
 
