@@ -9,7 +9,7 @@
   <body>
     <h1>Shopping List</h1>
 
-    <div ng-controller='ShoppingListController1 as toBuyList'>
+    <div ng-controller='ToBuyController as toBuyList'>
       <h3>To Buy List</h3>
       <div ng-if="toBuyList.items.length === 0">Everything is bought!</div>
       <ol>
@@ -20,7 +20,7 @@
       </ol>
     </div>
 
-    <div ng-controller='ShoppingListController2 as boughtList'>
+    <div ng-controller='AlreadyBoughtController as boughtList'>
       <h3>Already Bought List</h3>
       <div ng-if="boughtList.items.length === 0">Nothing bought yet</div>
       <ol>
