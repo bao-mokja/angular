@@ -20,7 +20,7 @@ function ShoppingListController1(ShoppingListService) {
 
 
 // LIST #2 - controller
-ShoppingListController2.$inject = ['ShoppingListFactory'];
+ShoppingListController2.$inject = ['ShoppingListService'];
 function ShoppingListController2(ShoppingListService) {
   var boughtList = this;
 
