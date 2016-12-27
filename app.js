@@ -1,35 +1,56 @@
 (function () {
 'use strict';
 
-angular.module('LunchCheck', [])
+angular.module('ShoppingListCheckOff', [])
+.controller('ShoppingListController1', ShoppingListController1)
+.controller('ShoppingListController2', ShoppingListController2)
+.service('ShoppingListService', ShoppingListService);
 
-.controller('LunchCheckController', TestFunction);
+// LIST #1 - controller
+ShoppingListController1.$inject = ['ShoppingListService'];
+function ShoppingListController1(ShoppingListFactory) {
+  var toBuyList = this;
 
-TestFunction.$inject = ["$scope"];
-    
-function TestFunction($scope){    
-  $scope.list = "";
-  $scope.message = "Please enter data first";
-  $scope.textColor = "red";
-
-  $scope.displayMessage = function () {
-    var listOfItems = $scope.list.split(',').filter(String)
-    if(listOfItems.length > 0 && listOfItems.length <= 3){
-        $scope.message = "Enjoy!"
-        $scope.textColor = "green"
-    }
-    else if(listOfItems.length > 3){
-        $scope.message = "Too much!"
-        $scope.textColor = "green"
-    }
-    else{
-        $scope.message = "Please enter data first"
-        $scope.textColor = "red"
-    }
-  };
-
-
+  toBuyList.items = ShoppingListService.getToBuyItems();
   
+  toBuyList.markAsBought = function(itemIndex){
+      ShoppingListService.markAsBought(itemIndex);
+  }
 }
+
+
+// LIST #2 - controller
+ShoppingListController2.$inject = ['ShoppingListFactory'];
+function ShoppingListController2(ShoppingListFactory) {
+  var boughtList = this;
+
+  boughtList.items = ShoppingListService.getBoughtItems();
+}
+
+
+function ShoppingListService() {
+  var service = this;
+
+  var toBuyItems = [{ name: "cookies", quantity: 10 },
+                    { name: "chips", quantity: 10 },
+                    { name: "cokes", quantity: 10 },
+                    { name: "plates", quantity: 10 },
+                    { name: "forks", quantity: 10 },
+                    { name: "cups", quantity: 10 }];
+  var boughtItems = [];
+
+  service.getToBuyItems = function () {
+    return toBuyItems;
+  };
+  
+  service.getBoughtItems = function () {
+    return boughtItems;
+  };
+  
+  service.markAsBought = function(itemIndex){
+      boughtItems.push(toBuyItems.splice(itemIndex,1))
+  }
+}
+
 
 })();
