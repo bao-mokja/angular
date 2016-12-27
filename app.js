@@ -8,7 +8,7 @@ angular.module('ShoppingListCheckOff', [])
 
 // LIST #1 - controller
 ShoppingListController1.$inject = ['ShoppingListService'];
-function ShoppingListController1(ShoppingListFactory) {
+function ShoppingListController1(ShoppingListService) {
   var toBuyList = this;
 
   toBuyList.items = ShoppingListService.getToBuyItems();
@@ -21,7 +21,7 @@ function ShoppingListController1(ShoppingListFactory) {
 
 // LIST #2 - controller
 ShoppingListController2.$inject = ['ShoppingListFactory'];
-function ShoppingListController2(ShoppingListFactory) {
+function ShoppingListController2(ShoppingListService) {
   var boughtList = this;
 
   boughtList.items = ShoppingListService.getBoughtItems();
