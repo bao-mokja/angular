@@ -60,11 +60,6 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.searchTerm = "";
     
-    var item = {
-        name: 'Bao'
-    };
-    
-    ctrl.foundItems.push(item);
     
     ctrl.narrowItDown = function(){
         ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
@@ -84,22 +79,21 @@ function MenuSearchService($http, ApiPath){
     
     
     service.getMatchedMenuItems = function(searchTerm){
-        var foundItems = [];
-        if(searchTerm === ""){
-            return foundItems;
-        }
+        var foundItems;
+        //if(searchTerm === ""){
+         //   return foundItems;
+        //}
         var promise = $http({
             method: "GET",
             url: (ApiPath)
         });
         promise.then(function (response) {
-            var menuItems = response.data;
+            foundItems = response.data;
             //menuItems.forEach(function(entry){
               //  if(entry.description.indexOf(searchTerm)!==-1){
                 //    foundItems.push(entry);
                 //}
             //});
-            return menuItems;
         })
         .catch(function (error) {
             console.log("Nothing found");
