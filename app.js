@@ -50,7 +50,7 @@ function FoundItemsDirectiveController(){
     var list = this;
     
     list.isListEmpty = function(){
-        return list.items.length === 0;
+        return list.items.length == 0;
     };
 }
 
