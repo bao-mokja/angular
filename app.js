@@ -3,8 +3,9 @@
 
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController',NarrowItDownController)
-.service('MenuSearchService', MenuSearchService);
+.service('MenuSearchService', MenuSearchService)
 //.directive('foundItems', FoundItemsDirective)
+.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
 
 
 /*function FoundItemsDirective(){
@@ -65,7 +66,14 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.narrowItDown = function(){
         
-        ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+        var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+        
+        promise.then(function (response) {
+             ctrl.foundItems = response.data;
+        })
+        .catch(function (error) {
+            console.log("Something went terribly wrong.");
+        });
     };
     
     ctrl.removeItem = function(itemIndex){
@@ -73,41 +81,17 @@ function NarrowItDownController(MenuSearchService){
     };
 }
 
-MenuSearchService.$inject = ['$http'];
-function MenuSearchService($http){
+MenuSearchService.$inject = ['$http', 'ApiBasePath'];
+function MenuSearchService($http, ApiBasePath){
     var service = this;
     
-    service.foundItems = [];
-    
     service.getMatchedMenuItems = function(searchTerm){
-        /*if(searchTerm === ""){
-            return items;
-        }*/
-        var promise = $http({
+       var response = $http({
             method: "GET",
-            url: "http://davids-restaurant.herokuapp.com/menu_items.json"
+            url: (ApiBasePath + "/categories.json")
         });
-        promise.then(function (response) {
-            service.foundItems = response.data;
-            //menuItems.forEach(function(entry){
-              //  if(entry.description.indexOf(searchTerm)!==-1){
-                //    foundItems.push(entry);
-                //}
-            //});
-        })
-        .catch(function (error) {
-            throw new Error("Error");
-        });
-        
-        var item = {
-            name: 'Bao',
-            short_name : 'B',
-            description : "test"
-        };
-    
-        service.foundItems.push(item);
 
-        return service.foundItems;
+        return response;
     };
 }
 
