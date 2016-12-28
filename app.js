@@ -94,7 +94,7 @@ function MenuSearchService($http){
             //});
         })
         .catch(function (error) {
-            console.log("Nothing found");
+            throw new Error("Error");
         });
 
         return service.foundItems;
