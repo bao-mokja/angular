@@ -94,11 +94,12 @@ function MenuSearchService($http, ApiPath){
         });
         promise.then(function (response) {
             var menuItems = response.data;
-            menuItems.forEach(function(entry){
-                if(entry.description.indexOf(searchTerm)!==-1){
-                    foundItems.push(entry);
-                }
-            });
+            //menuItems.forEach(function(entry){
+              //  if(entry.description.indexOf(searchTerm)!==-1){
+                //    foundItems.push(entry);
+                //}
+            //});
+            return menuItems;
         })
         .catch(function (error) {
             console.log("Nothing found");
