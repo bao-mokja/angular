@@ -63,11 +63,11 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.narrowItDown = function(){
         ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-    }
+    };
     
     ctrl.removeItem = function(itemIndex){
         ctrl.foundItems.splice(itemIndex,1);
-    }
+    };
 }
 
 MenuSearchService.$inject = ['$http', 'ApiPath'];
@@ -94,16 +94,16 @@ function MenuSearchService($http, ApiPath){
         })
         .catch(function (error) {
             console.log("Nothing found");
-        })
+        });
         
         var item = {
             name : "bao",
             short_name : "b",
             description : "test"
-        }
+        };
         foundItems.push(item);
         return foundItems;
-    }
+    };
 }
 
 })();
