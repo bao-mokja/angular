@@ -53,6 +53,7 @@ function FoundItemsDirectiveController(){
     };
 }
 
+
 NarrowItDownController.$inject = ['MenuSearchService']
 function NarrowItDownController(MenuSearchService){
     var ctrl = this;
@@ -63,10 +64,6 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.narrowItDown = function(){
         ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-        if(ctrl.foundItems.length === 0){
-            displayWarning() ;
-        }
-        
     }
     
     ctrl.removeItem = function(itemIndex){
