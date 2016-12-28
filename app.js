@@ -62,7 +62,13 @@ function NarrowItDownController(MenuSearchService){
     
     
     ctrl.narrowItDown = function(){
-        ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+        var item = {
+            name : "bao",
+            short_name : "b",
+            description : "test"
+        };
+        ctrl.foundItems.push(item);
+        //ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
     };
     
     ctrl.removeItem = function(itemIndex){
