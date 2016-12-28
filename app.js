@@ -76,8 +76,8 @@ function NarrowItDownController(MenuSearchService){
     };
 }
 
-MenuSearchService.$inject = ['$http', 'ApiPath'];
-function MenuSearchService($http, ApiPath){
+MenuSearchService.$inject = ['$http'];
+function MenuSearchService($http){
     var service = this;
     
     
