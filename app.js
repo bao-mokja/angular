@@ -88,9 +88,9 @@ function MenuSearchService($http, ApiBasePath){
          promise.then(function(menu_items){
             var matchItems = [];
             for(var i = 0; i < menu_items.length; i++){
-                if(menu_items[i].description.indexOf(searchTerm) !== -1){
+                //if(menu_items[i].description.indexOf(searchTerm) !== -1){
                     matchItems.push(menu_items[i]);
-                }
+                //}
             }
             return matchItems;
         });
