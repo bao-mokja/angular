@@ -60,6 +60,7 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.searchTerm = "";
     
+    ctrl.foundItems = [];
     
     ctrl.narrowItDown = function(){
         var item = {
