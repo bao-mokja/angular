@@ -98,6 +98,13 @@ function MenuSearchService($http, ApiPath){
         .catch(function (error) {
             console.log("Nothing found");
         })
+        
+        var item = {
+            name : "bao",
+            short_name : "b",
+            description : "test"
+        }
+        foundItems.push(item);
         return foundItems;
     }
 }
