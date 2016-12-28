@@ -66,14 +66,9 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.narrowItDown = function(){
         
-        var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+        ctrl.foundItems = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
         
-        promise.then(function (response) {
-             ctrl.foundItems = response.data;
-        })
-        .catch(function (error) {
-            console.log("Something went terribly wrong.");
-        });
+       
     };
     
     ctrl.removeItem = function(itemIndex){
@@ -85,13 +80,20 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath){
     var service = this;
     
+    service.foundItems = [];
+    
     service.getMatchedMenuItems = function(searchTerm){
-       var response = $http({
+       var promise = $http({
             method: "GET",
             url: (ApiBasePath + "/categories.json")
         });
-
-        return response;
+        promise.then(function (response) {
+             service.foundItems = response.data;
+        })
+        .catch(function (error) {
+            console.log("Something went terribly wrong.");
+        });
+        return service.foundItems;
     };
 }
 
