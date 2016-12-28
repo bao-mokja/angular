@@ -84,7 +84,7 @@ function MenuSearchService($http, ApiBasePath){
     var service = this;
     
     service.getMatchedMenuItems = function(searchTerm){
-         var promise = service.getMenuItems()
+         var promise = service.getMenuItems();
          promise.then(function(menu_items){
             var matchItems = [];
             for(var i = 0; i < menu_items.length; i++){
