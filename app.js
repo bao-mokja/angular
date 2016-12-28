@@ -84,7 +84,8 @@ function MenuSearchService($http, ApiBasePath){
     var service = this;
     
     service.getMatchedMenuItems = function(searchTerm){
-        return service.getMenuItems().then(function(menu_items){
+         var promise = service.getMenuItems()
+         promise.then(function(menu_items){
             var matchItems = [];
             for(var i = 0; i < menu_items.length; i++){
                 if(menu_items[i].description.indexOf(searchTerm) !== -1){
@@ -93,6 +94,7 @@ function MenuSearchService($http, ApiBasePath){
             }
             return matchItems;
         });
+        return promise;
     };
     
     service.getMenuItems = function(){
