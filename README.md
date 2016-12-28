@@ -1,2 +1,0 @@
-# angular
-angular learn repo

@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html ng-app='ShoppingListCheckOff'>
+<!doctype html>
+<html lang="en" >
   <head>
-    <meta charset="utf-8">
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="app.js"></script>
-    <title>Shopping List</title>
   </head>
-  <body>
-    <h1>Shopping List</h1>
+<body ng-app='NarrowItDownApp'>
+   <div class="container" ng-controller="NarrowItDownController as ctrl">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div ng-controller='ToBuyController as toBuyList'>
-      <h3>To Buy List</h3>
-      <div ng-if="toBuyList.items.length === 0">Everything is bought!</div>
-      <ol>
-        <li ng-repeat="item in toBuyList.items">
-          Buy {{ item.quantity }} {{ item.name }}
-          <button ng-click="toBuyList.markAsBought($index);">Bought</button>
-        </li>
-      </ol>
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model="ctrl.searchTerm">
     </div>
-
-    <div ng-controller='AlreadyBoughtController as boughtList'>
-      <h3>Already Bought List</h3>
-      <div ng-if="boughtList.items.length === 0">Nothing bought yet</div>
-      <ol>
-        <li ng-repeat="boughtItem in boughtList.items">
-          Bought {{ boughtItem.quantity }} {{ boughtItem.name }}
-        </li>
-      </ol>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click="ctrl.narrowItDown();">Narrow It Down For Me!</button>
     </div>
+    
+    <!-- found-items should be implemented as a component -->
+    <found-items found-items="ctrl.foundItems" on-remove="ctrl.removeItem(itemIndex)"></found-items>
+  </div>
 
-  </body>
+</body>
 </html>
