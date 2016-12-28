@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
@@ -19,16 +19,15 @@
     <div class="form-group narrow-button">
       <button class="btn btn-primary" ng-click="ctrl.narrowItDown();">Narrow It Down For Me!</button>
     </div>
-    
-    <ol>
-      <li ng-repeat="item in ctrl.foundItems">
-        {{ item.name }}
-        <!--<button ng-click="list.onRemove({index: $index});">Don't want this one!</button> -->
-      </li>
-    </ol> 
-      
-    <!-- found-items should be implemented as a component 
-    <found-items found-items="ctrl.foundItems" on-remove="ctrl.removeItem(itemIndex)"></found-items>-->
+
+<ol>
+  <li ng-repeat="item in ctrl.foundItems">
+    {{ item.name }}, {{ item.short_name }}, {{ item.description }}
+  </li>
+</ol>    	
+	 
+    <!-- found-items should be implemented as a component -->
+    <found-items items="ctrl.foundItems" on-remove="ctrl.removeItem(itemIndex)"></found-items>
   </div>
 
 </body>
