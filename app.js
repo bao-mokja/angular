@@ -3,9 +3,9 @@
 
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController',NarrowItDownController)
-.service('MenuSearchService', MenuSearchService)
+.service('MenuSearchService', MenuSearchService);
 //.directive('foundItems', FoundItemsDirective)
-.constant('ApiPath', "http://davids-restaurant.herokuapp.com/menu_items.json");
+
 
 /*function FoundItemsDirective(){
     var ddo = {
@@ -85,7 +85,7 @@ function MenuSearchService($http, ApiPath){
         //}
         var promise = $http({
             method: "GET",
-            url: (ApiPath)
+            url: "http://davids-restaurant.herokuapp.com/menu_items.json"
         });
         promise.then(function (response) {
             foundItems = response.data;
