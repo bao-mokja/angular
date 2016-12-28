@@ -70,9 +70,6 @@ function NarrowItDownController(MenuSearchService){
     }
 }
 
-
-})();
-
 MenuSearchService.$inject = ['$http', 'ApiPath'];
 function MenuSearchService($http, ApiPath){
     var service = this;
@@ -108,3 +105,6 @@ function MenuSearchService($http, ApiPath){
         return foundItems;
     }
 }
+
+})();
+
