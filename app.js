@@ -75,18 +75,18 @@ MenuSearchService.$inject = ['$http'];
 function MenuSearchService($http){
     var service = this;
     
+    service.foundItems = [];
     
     service.getMatchedMenuItems = function(searchTerm){
-        var foundItems = [];
-        if(searchTerm === ""){
-            return foundItems;
-        }
+        /*if(searchTerm === ""){
+            return items;
+        }*/
         var promise = $http({
             method: "GET",
             url: "http://davids-restaurant.herokuapp.com/menu_items.json"
         });
         promise.then(function (response) {
-            foundItems = response.data;
+            service.foundItems = response.data;
             //menuItems.forEach(function(entry){
               //  if(entry.description.indexOf(searchTerm)!==-1){
                 //    foundItems.push(entry);
@@ -97,7 +97,7 @@ function MenuSearchService($http){
             console.log("Nothing found");
         });
 
-        return foundItems;
+        return service.foundItems;
     };
 }
 
