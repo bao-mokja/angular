@@ -4,10 +4,10 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController',NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
-.directive('foundItems', FoundItemsDirective)
+//.directive('foundItems', FoundItemsDirective)
 .constant('ApiPath', "http://davids-restaurant.herokuapp.com/menu_items.json");
 
-function FoundItemsDirective(){
+/*function FoundItemsDirective(){
     var ddo = {
         templateUrl: 'menuitems.html',
         scope: {
@@ -51,7 +51,7 @@ function FoundItemsDirectiveController(){
     list.isListEmpty = function(){
         return list.items.length === 0;
     };
-}
+}*/
 
 
 NarrowItDownController.$inject = ['MenuSearchService']
