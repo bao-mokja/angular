@@ -68,7 +68,7 @@ function NarrowItDownController(MenuSearchService){
         
         var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
         
-        promise.then(function(matchItems){
+        promise.success(function(matchItems){
             ctrl.foundItems = matchItems;
         });
         
@@ -84,18 +84,15 @@ function MenuSearchService($http, ApiBasePath){
     var service = this;
     
     service.getMatchedMenuItems = function(searchTerm){
-        var promise = service.getMenuItems();
-       
-        promise.then(function(menu_items){
+        return service.getMenuItems().then(function(menu_items){
             var matchItems = [];
             for(var i = 0; i < menu_items.length; i++){
-                if(menu_items[i].description.indexOf(searchTerm) !== -1){
+                if(menu_items[i]["description"].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1){
                     matchItems.push(menu_items[i]);
                 }
             }
             return matchItems;
         });
-        return promise;
     };
     
     service.getMenuItems = function(){
@@ -105,7 +102,7 @@ function MenuSearchService($http, ApiBasePath){
         });
         
         promise.then(function (response) {
-             return response.data.menu_items;
+            return response.data["menu_items"];
         })
         .catch(function (error) {
             console.log("Something went terribly wrong.");
