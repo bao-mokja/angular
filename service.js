@@ -36,6 +36,10 @@ function MenuSearchService($http, ApiBasePath){
     service.getFetchedItem = function(itemIndex){
         return service.currentItems[itemIndex]; 
     };
+    
+    service.getFetchedItems = function(){
+        return service.currentItems; 
+    };
 }
 
 })();

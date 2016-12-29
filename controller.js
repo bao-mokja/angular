@@ -11,7 +11,7 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.searchTerm = "";
     
-    ctrl.foundItems = [];
+    ctrl.foundItems = MenuSearchService.getFetchedItems();
     
     ctrl.warning = "";
     
