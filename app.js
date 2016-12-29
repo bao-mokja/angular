@@ -23,7 +23,7 @@ function FoundItemsDirective(){
 }
 
 function FoundItemsDirectiveController(){
-    var list = this;
+
 }
 
 NarrowItDownController.$inject = ['MenuSearchService'];
