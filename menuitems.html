@@ -1,8 +1,8 @@
 <div class="loader">
 
 <ol>
-  <li ng-repeat="item in list.items" ui-sref="itemDetail({itemId: $index})">
-    {{ item.name }}, {{ item.short_name }}, {{ item.description }}
+  <li ng-repeat="item in list.items" >
+    <a ui-sref="itemDetail({itemId: $index})">{{ item.name }}</a>, {{ item.short_name }}, {{ item.description }}
     <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
   </li>
 </ol>    
