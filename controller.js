@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('NarrowItDownApp')
-.controller('NarrowItDownController',NarrowItDownController);
+.controller('NarrowItDownController',NarrowItDownController)
+.controller('ItemDetailController', ItemDetailController);
 
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService){
@@ -39,6 +40,16 @@ function NarrowItDownController(MenuSearchService){
     ctrl.removeItem = function(itemIndex){
         ctrl.foundItems.splice(itemIndex,1);
     };
+}
+
+
+
+// 'item' is injected through state's resolve
+ItemDetailController.$inject = ['item']
+function ItemDetailController(item) {
+  var itemDetail = this;
+  itemDetail.name = item.name;
+  itemDetail.description = item.description;
 }
 
 })();

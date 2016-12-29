@@ -8,6 +8,8 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath){
     var service = this;   
     
+    service.currentItems = [];
+    
     service.getMatchedMenuItems = function(searchTerm){
        return $http({
             method: "GET",
@@ -23,11 +25,16 @@ function MenuSearchService($http, ApiBasePath){
                     matchItems.push(menu_items[i]);
                 }
             }
+            service.currentItems = matchItems;
             return matchItems;
         })
         .catch(function (error) {
             console.log("Something went terribly wrong.");
         });
+    };
+    
+    service.getFetchedItem = function(itemIndex){
+        return service.currentItems[itemIndex]; 
     };
 }
 
