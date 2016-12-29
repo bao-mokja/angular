@@ -15,43 +15,9 @@ function FoundItemsDirective(){
             items: '<',
             onRemove: '&'
         },
-        controller: FoundItemsDirectiveController,
-        controllerAs: 'list',
-        bindToController: true,
-        link: FoundItemsDirectiveLink
+        controllerAs: 'list'
     };
     return ddo;
-}
-
-function FoundItemsDirectiveLink(scope, element, attrs, controller) {
-    
-    scope.$watch('list.isListEmpty()', function(newValue, oldValue){
-        if (newValue === true) {
-            displayWarning();
-        }
-        else{
-            removeWarning();
-        }
-    });
-    
-    function displayWarning() {
-        var warningElem = element.find("span.warning");
-        warningElem.slideDown(900);
-    }
-    
-    function removeWarning() {
-        var warningElem = element.find("span.warning");
-        warningElem.slideUp(900);
-    }
-}
-
-function FoundItemsDirectiveController(){
-    
-    var list = this;
-    
-    list.isListEmpty = function(){
-        return list.items.length == 0;
-    };
 }
 
 
@@ -63,15 +29,24 @@ function NarrowItDownController(MenuSearchService){
     
     ctrl.foundItems = [];
     
+    ctrl.warning = "";
+    
     
     ctrl.narrowItDown = function(){
         
-        var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-        
-        promise.then(function(matchItems){
-            ctrl.foundItems = matchItems;
-        });
-        
+        if(ctrl.searchTerm === ""){
+             ctrl.warning = "Nothing found!";
+        }
+        else{
+            var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+            
+            promise.then(function(matchItems){
+                ctrl.foundItems = matchItems;
+                if(ctrl.foundItems.length === 0){
+                    ctrl.warning = "Nothing found!";
+                }
+            });
+        }
     };
     
     ctrl.removeItem = function(itemIndex){
