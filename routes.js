@@ -2,6 +2,7 @@
 'use strict';
 
 angular.module('NarrowItDownApp')
+.config(RoutesConfig);
 
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider) {
