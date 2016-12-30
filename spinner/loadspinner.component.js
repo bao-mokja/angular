@@ -7,7 +7,7 @@ angular.module('Spinner')
   controller: SpinnerController
 });
 
-SpinnerController.$inject = ['$rootScope']
+SpinnerController.$inject = ['$rootScope'];
 function SpinnerController($rootScope) {
   var $ctrl = this;
   var cancellers = [];
@@ -38,6 +38,6 @@ function SpinnerController($rootScope) {
     });
   };
 
-};
+}
 
 })();
