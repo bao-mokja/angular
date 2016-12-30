@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('Spinner')
-.component('loadingSpinner', {
+.component('loadSpinner', {
   templateUrl: 'spinner/loadspinner.template.html',
   controller: SpinnerController
 });
