@@ -13,12 +13,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     // *** Set up UI states ***
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: 'main.template.html',
-        resolve: {
-            items: ['MenuSearchService', function (MenuSearchService) {
-                return MenuSearchService.getFetchedItems();
-            }]
-        }
+        templateUrl: 'main.template.html'
     })
     
     .state('home.itemDetail', {

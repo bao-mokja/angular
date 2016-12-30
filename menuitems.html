@@ -4,7 +4,7 @@
 
 <ol>
   <li ng-repeat="item in $ctrl.items" >
-    <a ui-sref="itemDetail({itemId: $index})">{{ item.name }}</a>, {{ item.short_name }}, {{ item.description }}
+    <a ui-sref="home.itemDetail({itemId: $index})">{{ item.name }}</a>, {{ item.short_name }}, {{ item.description }}
     <button ng-click="$ctrl.remove($index);">Don't want this one!</button>
   </li>
 </ol>    
