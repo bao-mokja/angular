@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('NarrowItDownApp')
-.service('MenuSearchService', MenuSearchService);
+.service('MenuSearchService', MenuSearchService)
+.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");;
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath){
