@@ -13,19 +13,20 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     // *** Set up UI states ***
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: 'main.template.html'
+        templateUrl: 'main.template.html',
+        resolve: {
+            items: ['MenuSearchService', function (MenuSearchService) {
+                return MenuSearchService.getFetchedItems();
+            }]
+        }
     })
     
-    .state('itemDetail', {
-        url: '/item-detail/{itemId}',
+    .state('home.itemDetail', {
+        //url: '/item-detail/{itemId}',
         templateUrl: 'item-detail.template.html',
         controller: 'ItemDetailController as itemDetail',
-        resolve: {
-            item: ['$stateParams', 'MenuSearchService', 
-                function ($stateParams,MenuSearchService){
-                    return MenuSearchService.getFetchedItem($stateParams.itemId);
-                }
-            ]
+        params: {
+            itemId: null
         }
     });
 }

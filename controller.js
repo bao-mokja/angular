@@ -45,11 +45,16 @@ function NarrowItDownController(MenuSearchService){
 
 
 // 'item' is injected through state's resolve
-ItemDetailController.$inject = ['item']
-function ItemDetailController(item) {
+ItemDetailController.$inject = ['$stateParams', 'items']
+function ItemDetailController($stateParams, items) {
   var itemDetail = this;
+  var item = items[$stateParams.itemId];
   itemDetail.name = item.name;
   itemDetail.description = item.description;
+  itemDetail.price_small = item.price_small;
+  itemDetail.small_portion_name = item.small_portion_name;
+  itemDetail.price_large = item.price_large;
+  itemDetail.large_portion_name = item.large_portion_name;
 }
 
 })();

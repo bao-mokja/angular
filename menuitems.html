@@ -1,5 +1,7 @@
 <div class="loader">
 
+<ui-view></ui-view>
+
 <ol>
   <li ng-repeat="item in $ctrl.items" >
     <a ui-sref="itemDetail({itemId: $index})">{{ item.name }}</a>, {{ item.short_name }}, {{ item.description }}
