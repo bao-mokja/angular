@@ -21,6 +21,7 @@ function NarrowItDownController(MenuSearchService){
         if(ctrl.searchTerm === ""){
             ctrl.warning = "Nothing found!";
             ctrl.foundItems = [];
+            MenuSearchService.flushFetchedItems();
         }
         else{
             var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
@@ -29,6 +30,7 @@ function NarrowItDownController(MenuSearchService){
                 ctrl.foundItems = matchItems;
                 if(ctrl.foundItems.length === 0){
                     ctrl.warning = "Nothing found!";
+                    MenuSearchService.flushFetchedItems();
                 }
                 else{
                     ctrl.warning = "";

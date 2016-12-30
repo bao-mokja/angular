@@ -41,6 +41,10 @@ function MenuSearchService($http, ApiBasePath){
     service.getFetchedItems = function(){
         return service.currentItems; 
     };
+    
+    service.flushFetchedItems = function(){
+        service.currentItems = [];
+    };
 }
 
 })();
