@@ -8,6 +8,7 @@ CategoryDetailController.$inject = ['MenuDataService','$stateParams', 'categorie
 function CategoryDetailController(MenuDataService,$stateParams, categories) {
     var ctrl = this;
     var category = categories[$stateParams.itemId].short_name;
+    console.log("Look for: "+ category);
     ctrl.items = MenuDataService.getItemsForCategory(category);
 }
 
