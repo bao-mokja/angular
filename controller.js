@@ -29,6 +29,7 @@ function NarrowItDownController(MenuSearchService){
                 ctrl.foundItems = matchItems;
                 if(ctrl.foundItems.length === 0){
                     ctrl.warning = "Nothing found!";
+                    ctrl.foundItems = [];
                 }
                 else{
                     ctrl.warning = "";
