@@ -33,14 +33,7 @@ function MenuSearchService($http, ApiBasePath){
             console.log("Something went terribly wrong.");
         });
     };
-    
-    service.getFetchedItem = function(itemIndex){
-        return service.currentItems[itemIndex]; 
-    };
-    
-    service.getFetchedItems = function(){
-        return service.currentItems; 
-    };
+
 }
 
 })();
