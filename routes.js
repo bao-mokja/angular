@@ -16,12 +16,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
         templateUrl: 'main.template.html'
     })
     
-    .state('home.itemDetail', {
-        //url: '/item-detail/{itemId}',
+    .state('itemDetail', {
+        url: '/item-detail/{itemId}',
         templateUrl: 'item-detail.template.html',
         controller: 'ItemDetailController as itemDetail',
-        params: {
-            itemId: null
+        resolve: {
+            item: ['$stateParams', 'MenuSearchService', 
+                function ($stateParams,MenuSearchService){
+                    return MenuSearchService.getFetchedItem($stateParams.itemId);
+                }
+            ]
         }
     });
 }
