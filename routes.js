@@ -24,6 +24,14 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
                 return MenuDataService.getAllCategories();
             }]
         }
+    })
+    
+    .state('categories.categoryDetail', {
+        templateUrl: 'category-detail.template.html',
+        controller: 'CategoryDetailController as categoryDetailCtrl',
+        params: {
+            itemId: null
+        }
     });
 }
 
