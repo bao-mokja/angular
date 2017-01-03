@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('NarrowItDownApp')
+angular.module('MenuApp')
 .controller('CategoriesController',CategoriesController);
 
 CategoriesController.$inject = ['MenuDataService', 'items'];
