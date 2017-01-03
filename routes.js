@@ -14,19 +14,6 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
         url: '/',
         templateUrl: 'main.template.html'
-    })
-    
-    .state('itemDetail', {
-        url: '/item-detail/{itemId}',
-        templateUrl: 'item-detail.template.html',
-        controller: 'ItemDetailController as itemDetail',
-        resolve: {
-            item: ['$stateParams', 'MenuSearchService', 
-                function ($stateParams,MenuSearchService){
-                    return MenuSearchService.getFetchedItem($stateParams.itemId);
-                }
-            ]
-        }
     });
 }
 
