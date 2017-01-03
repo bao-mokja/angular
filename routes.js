@@ -16,7 +16,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
         templateUrl: 'home.template.html'
     })
     
-    .state('home.categories', {
+    .state('categories', {
         templateUrl: 'maincategories.template.html',
         controller: 'CategoriesController as categoriesCtrl',
         resolve: {
