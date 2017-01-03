@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('NarrowItDownApp')
+angular.module('MenuApp')
 .config(RoutesConfig);
 
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -13,15 +13,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     // *** Set up UI states ***
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: 'main.template.html'
+        templateUrl: 'home.template.html'
     })
     
-    .state('home.itemDetail', {
-        //url: '/item-detail/{itemId}',
-        templateUrl: 'item-detail.template.html',
-        controller: 'ItemDetailController as itemDetail',
-        params: {
-            itemId: null
+    .state('home.categories', {
+        templateUrl: 'maincategories.template.html',
+        controller: 'CategoriesController as categoriesCtrl',
+        resolve: {
+            items: ['MenuDataService', function (MenuDataService) {
+                return MenuDataService.getAllCategories();
+            }]
         }
     });
 }
